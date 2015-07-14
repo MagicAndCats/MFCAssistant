@@ -142,7 +142,7 @@ if (0 === window.location.href.indexOf('http://www.myfreecams.com/mfc2/static/pl
             aSetCountdown.setAttribute('id', 'setCountDown');
             var txtSetCountdown = document.createTextNode('Set Countdown');
             aSetCountdown.appendChild(txtSetCountdown);
-            aSetCountdown.addEventListener('click', startCountDown);
+            aSetCountdown.addEventListener('click', function() { startCountDown(false, 10000); });
             countdownFieldSet.appendChild(aSetCountdown);
             countdownFieldSet.appendChild(br.cloneNode(true));
 
@@ -217,19 +217,27 @@ if (0 === window.location.href.indexOf('http://www.myfreecams.com/mfc2/static/pl
             chat.insertBefore(divMenu, chat.firstChild);
 
             body.appendChild(divAlert);
-
+           
             htmlSetup = true;
+            
         }
-        function startCountDown() {
+        function startCountDown(silentAutoStart, defaultCountDown) {
+        // silentAutoStart = true to surpress override? warning popup
+        // defaultCountDown = default counter token amount, had coded here at 10000
+            
+         if (silentAutoStart) {
+             newCountDown = defaultCountDown;
+         } else {    
             if (isCountDownActive) {
                 if (!confirm("You already have a countdown running.  Override?")) {
                     return;
                 }
             }
-            var newCountDown = prompt("What is the countdown amount?", 1000);
+            var newCountDown = prompt("What is the countdown amount?", defaultCountDown);
             if (null === newCountDown) {
                 return; //canceled out
             }
+         }
             if (NaN !== parseInt(newCountDown)) {
                 countDown = newCountDown;
                 isCountDownActive = true;
@@ -416,6 +424,9 @@ if (0 === window.location.href.indexOf('http://www.myfreecams.com/mfc2/static/pl
             aPostCurrentCount.setAttribute('class', 'hidden');
             killPosting = localStorage['mfca_killposting_' + currentModelName] === 'true' ? true : false;
 
+            // default to an initial 10000 countdown
+            startCountDown(true, 10000);
+            
             //setup the parser
             document.querySelector('#chat_box').addEventListener('DOMNodeInserted', parseChatMessage);
         }
