@@ -46,7 +46,7 @@ if (0 === window.location.href.indexOf('http://www.myfreecams.com/mfc2/static/pl
         '    {',
         '        position:absolute; ',
         '        top:0; ',
-        '        right:0;',
+        '        right:20;',
         '        background-color:Orange;',
         '        -moz-border-radius-bottomleft: 10px; ',
         '        -webkit-border-bottom-left-radius: 10px; ',
