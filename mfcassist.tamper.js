@@ -2,8 +2,8 @@
 // @name MFC Assistant
 // @version	0.1.28
 // @description	Assists MFC models/users track countdowns and some other basic stats regarding tips received.
-// @include	http://www.myfreecams.com/*
-// @match http://www.myfreecams.com/*
+// @include	https://www.myfreecams.com/*
+// @match https://www.myfreecams.com/*
 // @grant GM_addStyle
 
 // ==/UserScript==
@@ -20,7 +20,7 @@ if (navigator.userAgent.match(/chrome/i)) {
 //for some reason @match doesn't appear to work properly in Chrome, so check it here
 // URL of player windows has changed
 //if (0 === window.location.href.indexOf('http://www.myfreecams.com/mfc2/static/player.html')) {
-if (0 === window.location.href.indexOf('http://www.myfreecams.com/_html/player.html')) {
+if (0 === window.location.href.indexOf('https://www.myfreecams.com/_html/player.html')) {
     var maStyles = [
         '    #ma-alert ',
         '    {',
